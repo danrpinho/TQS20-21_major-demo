@@ -1,0 +1,21 @@
+// The operator group
+opGroup{
+    //Define replacements for AOR 
+    BIN(*)->{+,/};
+
+    //Define replacements for ROR
+    BIN(<=)->{==,<,!=,TRUE};
+    BIN(==)->{<=,>=,FALSE,LHS,RHS};
+
+    //Define deletion of return statements
+    DEL(RETURN);
+    DEL(INC);
+
+    //Enable mutation operators
+    AOR;
+    ROR;
+    STD;
+}
+
+// Call the operator group for the method
+opGroup<"parallelogram.Parallelogram::classify(int,int,double)">;

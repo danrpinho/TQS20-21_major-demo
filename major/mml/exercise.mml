@@ -1,0 +1,23 @@
+targetOp{
+    //Define replacements for AOR 
+    BIN(*)->{+,/};
+
+    //Define replacements for ROR
+    BIN(<=)->{==,<,!=,TRUE};
+    BIN(==)->{<=,>=,FALSE,LHS,RHS};
+
+    //Define deletion of return statements
+    DEL(RETURN);
+
+    //Define replacements for COR
+    BIN(||)->{!=,LHS,RHS,TRUE};
+
+    //Enable mutation operators
+    AOR;
+    ROR;
+    STD;
+    COR;
+}
+
+// Call the defined operator group for the target method
+targetOp<"parallelogram.Parallelogram::classify(int,int,double)">;
